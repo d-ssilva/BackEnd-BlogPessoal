@@ -28,6 +28,16 @@ public class Usuario {
 	@Size(min = 2, max = 100)
 	private String senha;
 
+	// CRIAÇÃO DO CONSTRUCTOR
+	public Usuario() {}
+
+	// CRIAÇÃO DO CONSTRUCTOR
+	public Usuario(String nome, String usuario, String senha){
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+	}
+
 	public long getId() {
 		return id;
 	}
