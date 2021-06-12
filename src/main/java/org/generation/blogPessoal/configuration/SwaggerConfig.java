@@ -1,8 +1,9 @@
-package org.generation.configuration;
+package org.generation.blogPessoal.configuration;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -14,19 +15,29 @@ import springfox.documentation.service.Response;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
+
+@Configuration
 public class SwaggerConfig {
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2).select()
-                .apis(RequestHandlerSelectors.basePackage("br.org.generation.blogpessoal.controller"))
-                .paths(PathSelectors.any()).build().apiInfo(metadata()).useDefaultResponseMessages(false)
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors
+                .basePackage("org.generation.blogPessoal.controller"))
+                .paths(PathSelectors.any())
+                .build()
+                .apiInfo(metadata())
+                .useDefaultResponseMessages(false)
                 .globalResponses(HttpMethod.GET, responseMessageForGET());
     }
 
     public static ApiInfo metadata() {
-        return new ApiInfoBuilder().title("API - Blog Pessoal").description("Projeto API Spring - Blog Pessoal")
-                .version("1.0.0").license("Apache License Version 2.0").licenseUrl("http://localhost:8080/swagger-ui/")
-                .contact(contact()).build();
+        return new ApiInfoBuilder().title("Blog Pessoal Danilo").description("Projeto API Spring - Blog Pessoal")
+                .version("1.0.0")
+                .license("Apache License Version 2.0")
+                .licenseUrl("https://github.com/d-ssilva")
+                .contact(contact())
+                .build();
     }
 
     private static Contact contact() {
