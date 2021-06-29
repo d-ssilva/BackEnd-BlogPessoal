@@ -38,6 +38,12 @@ public class Postagem {
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
 
+
+	// RELACIONAMENTO DA TABELA USUARIO
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
+
 	public void setTema(Tema tema) {
 		this.tema = tema;
 	}
