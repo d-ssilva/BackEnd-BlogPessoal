@@ -28,6 +28,19 @@ public class Usuario {
 	@Size(min = 2, max = 100)
 	private String senha;
 
+
+	// LINK PARA POSTAR FOTO
+	private String foto;
+
+	// VAR DETERMINA O TIPO DA CONTA DE USUARIO
+	private String tipo;
+
+
+	// RELACIONAMENTO DE USUARIO COM TABELA POSTAGEM
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("usuario")
+	private List<Postagem> postagem;
+
 	// CRIAÇÃO DO CONSTRUCTOR
 	public Usuario() {}
 
@@ -70,5 +83,29 @@ public class Usuario {
 		this.senha = senha;
 	}
 	
+
+	public String getFoto() {
+		return this.foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getTipo() {
+		return this.tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public List<Postagem> getPostagem() {
+		return this.postagem;
+	}
+
+	public void setPostagem(List<Postagem> postagem) {
+		this.postagem = postagem;
+	}
 	
 }
