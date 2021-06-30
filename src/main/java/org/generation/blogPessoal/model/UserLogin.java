@@ -10,7 +10,7 @@ public class UserLogin {
 	private String foto;
 	private String tipo;
 
-
+	// vitinho coach de lol
 
 	public Long getId() {
 		return this.id;
