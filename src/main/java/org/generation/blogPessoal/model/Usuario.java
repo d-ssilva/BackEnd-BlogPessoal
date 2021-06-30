@@ -31,7 +31,7 @@ public class Usuario {
 	private String usuario;
 	
 	@NotNull
-	@Size(min = 2, max = 100)
+	@Size(min = 2)
 	private String senha;
 
 
