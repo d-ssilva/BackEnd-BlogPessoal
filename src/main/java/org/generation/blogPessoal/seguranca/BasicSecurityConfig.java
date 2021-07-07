@@ -38,7 +38,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/**").permitAll() 
 		.antMatchers("/usuarios/logar").permitAll() //Libera alguns caminhos dentro do meu controle para que o cliente tenha acesso a eles sem que precisse passsar uma chave token
 		.antMatchers("/usuarios/cadastrar").permitAll()
-		.antMatchers(HttpMethod.GET ,"/postagens").permitAll()
+		.antMatchers(HttpMethod.GET ,"/postagem").permitAll()
 		.antMatchers(HttpMethod.GET ,"/tema").permitAll()
 		.anyRequest().authenticated() //  todas as outras requisições estarão autenticadas
 		.and().httpBasic()
