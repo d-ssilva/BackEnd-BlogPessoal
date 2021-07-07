@@ -19,9 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/usuarios")
 public class UsuarioController {
 	
-	@Autowired
-	private UsuarioRepository repository;
-
+	
 	/* Injeção de dependência - Classe Repositorio (UsuarioRepository) */
 	@Autowired
 	private UsuarioService usuarioService;
