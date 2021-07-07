@@ -15,10 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/usuarios")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping("/usuarios")
 public class UsuarioController {
+	
+	@Autowired
+	private UsuarioRepository repository;
 
+	/* Injeção de dependência - Classe Repositorio (UsuarioRepository) */
 	@Autowired
 	private UsuarioService usuarioService;
 
@@ -28,9 +32,19 @@ public class UsuarioController {
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());				
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<Usuario> GetById(@PathVariable long id) {
+		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
+	}
+
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Usuario> Post(@RequestBody Usuario usuario){
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(usuarioService.CadastrarUsuario(usuario));
+	}
+
+	@PutMapping
+	public ResponseEntity<Usuario> Put(@RequestBody Usuario usuario) {
+		return ResponseEntity.ok(repository.save(usuario));
 	}
 }
