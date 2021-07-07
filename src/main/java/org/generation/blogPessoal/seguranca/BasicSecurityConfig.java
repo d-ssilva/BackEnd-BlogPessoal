@@ -35,8 +35,11 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{ //  RESPONSÁVEL PELO LOGIN
 		http.authorizeRequests()
+		.antMatchers("/**").permitAll() 
 		.antMatchers("/usuarios/logar").permitAll() //Libera alguns caminhos dentro do meu controle para que o cliente tenha acesso a eles sem que precisse passsar uma chave token
 		.antMatchers("/usuarios/cadastrar").permitAll()
+		.antMatchers(HttpMethod.GET ,"/postagens").permitAll()
+		.antMatchers(HttpMethod.GET ,"/tema").permitAll()
 		.anyRequest().authenticated() //  todas as outras requisições estarão autenticadas
 		.and().httpBasic()
 		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 'STATELESS' PQ NÃO GUARDAM ESTADO
