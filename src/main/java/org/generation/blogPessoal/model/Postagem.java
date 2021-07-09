@@ -92,4 +92,12 @@ public class Postagem {
 		this.usuario = usuario;
 	}
 
+	public Date getData() {
+		return this.data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
 }
